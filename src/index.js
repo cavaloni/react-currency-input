@@ -227,6 +227,12 @@ class CurrencyInput extends Component {
     }
 
 
+    handleRef = input => {
+        this.theInput = input;
+        let node = ReactDOM.findDOMNode(this.theInput);
+        this.props.getRefNode(node);
+    }
+
     /**
      * Component lifecycle function.
      * @returns {XML}
@@ -235,7 +241,7 @@ class CurrencyInput extends Component {
     render() {
         return (
             <input
-                ref={(input) => { this.theInput = input; }}
+                ref={this.handleRef}
                 type={this.props.inputType}
                 value={this.state.maskedValue}
                 onChange={this.handleChange}
